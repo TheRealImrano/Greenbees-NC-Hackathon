@@ -94,3 +94,19 @@ body {
 .content {
   aspect-ratio: 1;
 }
+
+.hex{
+  
+}
+
+.hex--red{
+  fill: #ff9595;
+}
+
+.hex--green{
+  fill: #95ff95;
+}
+
+.hex--blue{
+  fill: #94c9ff;
+}
