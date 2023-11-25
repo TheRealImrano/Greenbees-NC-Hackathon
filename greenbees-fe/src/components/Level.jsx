@@ -1,11 +1,31 @@
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { HexGrid, Layout, Hexagon, GridGenerator, Hex } from 'react-hexgrid';
 import { decodeLevelStr } from '../utils/hexGeometry';
 import { Honeycomb } from './Honeycomb';
 
-export async function Level({levelID}){
-    console.log('Trying to render level!')
-    await axios.get(`localhost:5000/api/level/${levelID}`)
+export function Level({levelID}){
+    const [layout, setLayout] = useState(null);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(`http://localhost:5000/api/level/${levelID}`);
+          setLayout(response.data.layout);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+  
+      fetchData();
+    }, [levelID]);
+
+    if (layout === null) {
+      // Data is still being fetched
+      return <div>Loading...</div>;
+    }
+
+    // axios.get(`localhost:5000/api/level/${levelID}`)
     // const {layout} = axios.get(`localhost:5000/api/level/${levelID}`)
     const hexagons = decodeLevelStr(layout);
 
