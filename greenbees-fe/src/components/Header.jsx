@@ -1,9 +1,7 @@
 export function Header (){
     return (
         <div className="border header">
-            <p>
-                1
-            </p>
+            <img height='100%' src='/logo-500x500.svg'/>
             <div>
                 hi
             </div>
