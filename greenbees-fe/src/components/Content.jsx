@@ -10,5 +10,6 @@ function Content () {
       <Route path='/about' element={<AboutPage/>}/>
     </Routes>
   )
+}
 
 export default Content;
