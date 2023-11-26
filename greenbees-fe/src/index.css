@@ -137,6 +137,7 @@ h1 {
 
 #header__title {
   line-height: 100%;
+  text-decoration: none;
 }
 
 #header__link {

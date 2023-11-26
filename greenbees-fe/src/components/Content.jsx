@@ -1,16 +1,16 @@
 import React, { Component, useState } from 'react';
 import { Level } from './Level';
+import { AboutPage } from './AboutPage';
+import {Route, Routes} from 'react-router-dom'
 
-// const [levelID, setLevelID] = useState(1)
 
-
-class Content extends Component {
-    render() {
-        
-        return (
-          <Level/>
-        )
-      }
+function Content () { 
+  return (
+    <Routes>
+      <Route path='/' element={<Level/>}/>
+      <Route path='/about' element={<AboutPage/>}/>
+    </Routes>
+  )
 }
 
 export default Content;
