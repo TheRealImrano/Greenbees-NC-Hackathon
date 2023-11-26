@@ -1,0 +1,3 @@
+[submodule "greenbees-fe/Greenbees-Data-NC-Hackathon"]
+	path = greenbees-fe/Greenbees-Data-NC-Hackathon
+	url = https://github.com/TypeError92/Greenbees-Data-NC-Hackathon
