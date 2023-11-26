@@ -12,6 +12,7 @@ const fetchLevelData = (levelID) => {
 export function Level({levelID}){
     const [layout, setLayout] = useState([])
     const [finish, setFinish] = useState([4, 1, -5])
+    const [previousColourSetter, setPreviousColourSetter] = useState(null)
     const [currentHex, setCurrentHex] = useState([0, 0, 0])
     const [path, setPath] = useState([])
     const [isLoading, setIsLoading] = useState(false)
@@ -48,7 +49,7 @@ export function Level({levelID}){
         <h1>{`Level ${levelID}`}.</h1>
         <HexGrid width={500} height={500}>
           <Layout size={{ x: 7, y: 7 }}>
-            { layout.map(([[q, r, s], colour], i) => <Honeycomb initColour={colour} key={i} coords={[q, r, s]} currentHex={currentHex} setCurrentHex={setCurrentHex} finish={finish}/>) }
+            { layout.map(([[q, r, s], colour], i) => <Honeycomb initColour={colour} key={i} coords={[q, r, s]} currentHex={currentHex} setCurrentHex={setCurrentHex} finish={finish} previousColourSetter={previousColourSetter} setPreviousColourSetter={setPreviousColourSetter}/>) }
           </Layout>
         </HexGrid>
       </div>
