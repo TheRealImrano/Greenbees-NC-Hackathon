@@ -1,40 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { HexGrid, Layout, Hexagon, GridGenerator, Hex } from 'react-hexgrid';
-import { decodeLevelStr } from '../utils/hexGeometry';
+import { decodeLevelStr, offsetToCubeQ } from '../utils/hexGeometry';
 import { Honeycomb } from './Honeycomb';
 
+
+const fetchLevelData = (levelID) => {
+  return axios.get(`https://greenbees-data.onrender.com//api/level/${levelID}`)
+}
+
 export function Level({levelID}){
-    const [layout, setLayout] = useState(null);
+    const [layout, setLayout] = useState([])
+    const [finish, setFinish] = useState([4, 1, -5])
+    const [currentHex, setCurrentHex] = useState([0, 0, 0])
+    const [path, setPath] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(`https://greenbees-data.onrender.com//api/level/${levelID}`);
-          setLayout(response.data.layout);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      };
-  
-      fetchData();
+      setIsLoading(true)
+      fetchLevelData(levelID)
+      .then(({data}) => {
+        setIsLoading(false)
+        setLayout(decodeLevelStr(data.layout))
+        // setPath([offsetToCubeQ(data.start)])
+        // setFinish(offsetToCubeQ(data.finish))
+      })
+      
     }, [levelID]);
 
-    if (layout === null) {
+    useEffect(() => {
+      setPath((currentPath) => [...currentPath, currentHex])
+    }, [currentHex])
+
+    
+
+
+    if (isLoading) {
       // Data is still being fetched
       return <div>Loading...</div>;
     }
 
     // axios.get(`localhost:5000/api/level/${levelID}`)
     // const {layout} = axios.get(`localhost:5000/api/level/${levelID}`)
-    const hexagons = decodeLevelStr(layout);
 
     return (
       <div className="App content border">
         <h1>{`Level ${levelID}`}.</h1>
         <HexGrid width={500} height={500}>
           <Layout size={{ x: 7, y: 7 }}>
-            { hexagons.map(([[q, r, s], colour], i) => <Honeycomb initColour={colour} key={i} q={q} r={r} s={s}/>) }
+            { layout.map(([[q, r, s], colour], i) => <Honeycomb initColour={colour} key={i} coords={[q, r, s]} currentHex={currentHex} setCurrentHex={setCurrentHex} finish={finish}/>) }
           </Layout>
         </HexGrid>
       </div>

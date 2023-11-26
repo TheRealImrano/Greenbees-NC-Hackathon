@@ -20,3 +20,11 @@ export function decodeLevelStr (str){
     })
     return hexagons;
 }
+
+export function match([q1, r1, s1], [q2, r2, s2]){
+    return q1 === q2 && r1 === r2 && s1 === s2
+}
+
+export function cubeDistance([q1, r1, s1], [q2, r2, s2]){
+    return (Math.abs(q1-q2) + Math.abs(r1-r2) + Math.abs(s1-s2)) / 2
+}

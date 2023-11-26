@@ -180,3 +180,12 @@ h1 {
 .hex--blue{
   fill: #94c9ff;
 }
+
+.hex--queen{
+  stroke: #ffbf00;
+  stroke-width: 0.8;
+}
+
+.hex--current{
+  stroke-width: 1;
+}
