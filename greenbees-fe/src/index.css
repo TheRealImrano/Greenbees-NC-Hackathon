@@ -13,6 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -61,10 +62,57 @@ button:focus-visible {
   }
 } */
 
+
+* {
+  border-radius: 4px;
+  color: #3d2e00
+}
+
+#root {
+  background-color: rgba(255, 251, 240, .96);
+  border-radius: 18px;
+  min-width: 400px;
+  max-width: 1280px;
+  max-height: 89vh;
+  overflow: auto;
+  margin: 24px auto;
+  text-align: center;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  gap: 24px;
+
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-  display: flexbox;
-  grid-template-rows: 80px 1fr 80px;
-  ;
+  height: 100%;
+  background-image: url('honey-frame.jpg');
+}
+
+.bg-image {
+  
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  font-family: 'Beth Ellen', cursive;
+}
+
+.main {
+
 }
 
 .border {
@@ -73,30 +121,52 @@ body {
 }
 
 .header {
+  background-color: #ffcc33;
+  border-radius: 12px;
+  border: #3d2e00 solid 4px;
+  box-shadow: 0px 5px 5px -3px #3d2e00;
   display: grid;
-  grid-template-columns: 150px 1fr 150px 150px 150px;
+  grid-template-columns: 144px 1fr 144px;
+  height: 96px;
+  padding: 6px 12px
 }
 
+#header__logo {
+  height: 100%;
+}
+
+#header__title {
+  line-height: 100%;
+}
+
+#header__link {
+  font-family: 'Beth Ellen', cursive;
+  top: 50%;
+  transform: translateY(30%);
+}
+
+
 .footer {
-  position: fixed;
-  bottom: 0px;
   left: 10px;
   right: 10px;
   text-align: center;
 }
 
-.main {
-  display: grid;
-  grid-template-columns: 0.5fr 120px 50% 120px 0.5fr;
-  gap: 5px;
-}
-
 .content {
   aspect-ratio: 1;
+  height: 100%;
+  min-height: 400px;
+  min-width: 400px;
+  max-height: 800px;
+  max-width: 800px;
+  border: #3d2e00 solid 8px;
+  box-shadow: 0px 5px 5px -3px #3d2e00;
+  margin: 0 auto;
 }
 
 .hex{
-  
+  stroke: #3d2e00;
+  stroke-width: 0.4;
 }
 
 .hex--red{

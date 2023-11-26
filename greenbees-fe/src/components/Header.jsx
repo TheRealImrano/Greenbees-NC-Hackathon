@@ -1,21 +1,9 @@
 export function Header (){
     return (
-        <div className="border header">
-            <p>
-                1
-            </p>
-            <div>
-                hi
-            </div>
-            <p>
-                2
-            </p>
-            <p>
-                3
-            </p>
-            <p>
-                4
-            </p>
+        <div className="header">
+            <img id='header__logo' src='/logo-500x432.svg'/>
+            <h1 id='header__title'>greenbees</h1>
+            <a id='header__link'>about</a>
         </div>
     )
 }
