@@ -20,13 +20,22 @@ const colourCombos = {
     }
 }
 
-export function Honeycomb ({coords, initColour, currentHex, setCurrentHex, finish, previousColourSetter, setPreviousColourSetter}){
+export function Honeycomb ({coords, initColour, currentHex, setCurrentHex, finish, previousHex, setPreviousHex, currentColour, setCurrentColour, setLevelID}){
     const [q, r, s] = coords
     const [colour, setColour] = useState(initColour)
 
     useEffect(() => {
-        if (match(coords, currentHex) && previousColourSetter){
-            let newColour = colour
+        if (previousHex && match(coords, previousHex)){
+            console.log(currentHex, finish);
+            if (match(currentHex, finish) && currentColour === 'green'){
+                console.log('level complete!');
+                setLevelID((currentLevelID)=>{
+                    return currentLevelID + 1
+                })
+            }
+            // let newColour = colour
+
+            setColour(currentColour);
             // previousColourSetter((previousColour) => {
             //     newColour = colourCombos[previousColour][colour]
                 
@@ -40,8 +49,13 @@ export function Honeycomb ({coords, initColour, currentHex, setCurrentHex, finis
 
     const onClick = (e) => {
         if (cubeDistance([q, r, s], currentHex) === 1){
-            // setPreviousColourSetter(setColour)
-            setCurrentHex(coords)
+            setColour((myCurrentColour)=>{
+                const newColour = colourCombos[myCurrentColour][currentColour]
+                setCurrentColour(newColour)
+                return newColour;
+            })
+            setPreviousHex(currentHex);
+            setCurrentHex(coords);
         }
     }
     

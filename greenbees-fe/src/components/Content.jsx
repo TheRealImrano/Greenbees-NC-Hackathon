@@ -6,8 +6,9 @@ import { Level } from './Level';
 
 class Content extends Component {
     render() {
+        
         return (
-          <Level levelID={1}/>
+          <Level/>
         )
       }
 }
