@@ -11,14 +11,15 @@ const fetchLevelData = (levelID) => {
 
 export function Level(){
     const [layout, setLayout] = useState([])
-    const [finish, setFinish] = useState([4, 1, -5])
+    const [finish, setFinish] = useState([])
     const [previousHex, setPreviousHex] = useState(null)
-    const [currentHex, setCurrentHex] = useState([0, 0, 0])
+    const [currentHex, setCurrentHex] = useState([])
     const [path, setPath] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [currentColour, setCurrentColour] = useState('green')
     const [previousColour, setPreviousColour] = useState(null)
     const [levelID, setLevelID] = useState(1)
+    const [gameComplete, setGameComplete] = useState(false)
 
     // record colour of old hex
     // move from current hex to new hex
@@ -27,6 +28,9 @@ export function Level(){
 
 
     useEffect(() => {
+      if (levelID >= 5){
+        return;
+      }
       setIsLoading(true)
       //
       // setLayout(decodeLevelStr("ggr.;..g.;.bb.;r...;.gbr"))
@@ -34,10 +38,13 @@ export function Level(){
 
       fetchLevelData(levelID)
       .then(({data}) => {
+        // console.log(data)
         setIsLoading(false)
         setLayout(decodeLevelStr(data.layout))
-        // setPath([offsetToCubeQ(data.start)])
-        // setFinish(offsetToCubeQ(data.finish))
+        console.log()
+        setCurrentHex(offsetToCubeQ(...data.start))
+        setFinish(offsetToCubeQ(...data.finish))
+        console.log(data.start, data.finish);
       })
       
     }, [levelID]);
@@ -57,6 +64,14 @@ export function Level(){
     if (isLoading) {
       // Data is still being fetched
       return <div>Loading...</div>;
+    }
+
+    if (levelID >= 5){
+      return (
+        <h1>
+          That's it for now, more levels coming soon! ;)
+        </h1>
+      )
     }
 
     // axios.get(`localhost:5000/api/level/${levelID}`)
