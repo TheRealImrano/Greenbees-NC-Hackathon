@@ -69,24 +69,26 @@ button:focus-visible {
 }
 
 #root {
-  display: grid;
-  grid-template-rows: 80px 1fr 80px;
+  
+
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
 }
 
+body {
+  background-color: #fffbf0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 500px;
+}
+
+
 h1 {
   font-family: 'Beth Ellen', cursive;
 }
 
-body {
-  background-color: #fffbf0;
-  display: flexbox;
-  row-gap: 500px;
-  grid-template-rows: 80px 1fr 80px;
-  ;
-}
 
 .border {
   border: #747bff solid 2px;
@@ -95,9 +97,11 @@ body {
 
 .header {
   background-color: #ffcc33;
+  border-radius: 12px;
   display: grid;
   grid-template-columns: 144px 1fr 144px 144px 144px;
   height: 96px;
+  margin-top: 24px;
   padding: 6px 12px
 }
 
@@ -122,6 +126,7 @@ body {
   position: fixed;
   bottom: 0px;
   left: 10px;
+  margin-bottom: 24px;
   right: 10px;
   text-align: center;
 }
