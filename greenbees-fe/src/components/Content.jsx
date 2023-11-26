@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Level } from './Level';
+import { AboutPage } from './AboutPage';
+import {Route, Routes} from 'react-router-dom'
 
-class Content extends Component {
-    render() {
-        return (
-          <Level/>
-        )
-      }
-}
+function Content () { 
+  return (
+    <Routes>
+      <Route path='/' element={<Level/>}/>
+      <Route path='/about' element={<AboutPage/>}/>
+    </Routes>
+  )
 
 export default Content;
