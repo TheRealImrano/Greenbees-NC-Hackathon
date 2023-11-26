@@ -10,7 +10,7 @@ export function Level({levelID}){
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/api/level/${levelID}`);
+          const response = await axios.get(`https://greenbees-data.onrender.com//api/level/${levelID}`);
           setLayout(response.data.layout);
         } catch (error) {
           console.error('Error fetching data:', error);
