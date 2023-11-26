@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import { HexGrid, Layout, Hexagon, GridGenerator, Hex } from 'react-hexgrid';
+import { HexGrid, Layout } from 'react-hexgrid';
 import { decodeLevelStr, offsetToCubeQ } from '../utils/hexGeometry';
 import { Honeycomb } from './Honeycomb';
 
@@ -14,56 +14,30 @@ export function Level(){
     const [finish, setFinish] = useState([])
     const [previousHex, setPreviousHex] = useState(null)
     const [currentHex, setCurrentHex] = useState([])
-    const [path, setPath] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [currentColour, setCurrentColour] = useState('green')
-    const [previousColour, setPreviousColour] = useState(null)
     const [levelID, setLevelID] = useState(1)
-    const [gameComplete, setGameComplete] = useState(false)
-
-    // record colour of old hex
-    // move from current hex to new hex
-    // record colour of the new one
-    // 
-
 
     useEffect(() => {
+
       if (levelID >= 5){
         return;
       }
+
       setIsLoading(true)
-      //
-      // setLayout(decodeLevelStr("ggr.;..g.;.bb.;r...;.gbr"))
-      //
 
       fetchLevelData(levelID)
       .then(({data}) => {
-        // console.log(data)
         setIsLoading(false)
         setLayout(decodeLevelStr(data.layout))
-        console.log()
         setCurrentHex(offsetToCubeQ(...data.start))
         setFinish(offsetToCubeQ(...data.finish))
-        console.log(data.start, data.finish);
       })
       
     }, [levelID]);
 
-    // useEffect(() => {
-    //   if (path.length){
-    //     setPreviousHex(currentHex);
-    //   }
-    //   setPath((currentPath) => [...currentPath, currentHex])
-      
-    //   // if (path.length)
-    // }, [currentHex])
-
-    
-
-
     if (isLoading) {
-      // Data is still being fetched
-      return <div>Loading...</div>;
+      return <div><i>Loading...</i></div>;
     }
 
     if (levelID >= 5){
@@ -73,9 +47,6 @@ export function Level(){
         </h1>
       )
     }
-
-    // axios.get(`localhost:5000/api/level/${levelID}`)
-    // const {layout} = axios.get(`localhost:5000/api/level/${levelID}`)
 
     return (
       <div className="App content border">
