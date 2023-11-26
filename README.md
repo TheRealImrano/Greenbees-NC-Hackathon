@@ -11,11 +11,12 @@ Bees hate conflict. When two interacting neighbours currently have the same colo
 This little game was submitted as a contribution to Northcoders' first (annual..?) hackathon. As such, it is the product of only 48h hours of planning and coding and definitely not where we'd like it to be, but we're leaving it here "as is". 
 
 To run the app, please run the following commands in your terminal:
-  git clone https://github.com/TheRealImrano/Greenbees-NC-Hackathon.git
-  npm i
-  cd ./greenbees-fe
-  npm run dev
 
+    git clone https://github.com/TheRealImrano/Greenbees-NC-Hackathon.git
+    npm i
+    cd ./greenbees-fe
+    npm run dev
+    
 If you're liking our work, please check out our other projects on our gitHub pages! :)
 
 [Ali Afridi](https://github.com/TheRealImrano)
