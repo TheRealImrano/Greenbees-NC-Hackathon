@@ -33,17 +33,8 @@ export function Honeycomb ({coords, initColour, currentHex, setCurrentHex, finis
                     return currentLevelID + 1
                 })
             }
-            // let newColour = colour
 
             setColour(currentColour);
-            // previousColourSetter((previousColour) => {
-            //     newColour = colourCombos[previousColour][colour]
-                
-            //     return newColour
-            // })
-            // setColour(() => {
-            //     console.log(`Setting colour of ${coords} to ${newColour}.`)
-            // })
         }
     }, [currentHex])
 
@@ -58,10 +49,8 @@ export function Honeycomb ({coords, initColour, currentHex, setCurrentHex, finis
             setCurrentHex(coords);
         }
     }
-    
 
     return(
         <Hexagon className={`hex hex--${colour}${match(coords, currentHex)?' hex--current':''}${match(coords, finish) ? ' hex--queen' : ''}`} q={q} r={r} s={s} onClick={onClick}/>
-
     )
 }
