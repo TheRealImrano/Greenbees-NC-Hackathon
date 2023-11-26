@@ -2,7 +2,7 @@ import Content from "./Content"
 
 export function Main (){
     return(
-        <main className="border main">
+        <main className="main">
             <Content/>
         </main> 
     )
