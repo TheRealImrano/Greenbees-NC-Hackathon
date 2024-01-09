@@ -26,14 +26,11 @@ export function Honeycomb ({coords, initColour, currentHex, setCurrentHex, finis
 
     useEffect(() => {
         if (previousHex && match(coords, previousHex)){
-            console.log(currentHex, finish);
             if (match(currentHex, finish) && currentColour === 'green'){
-                console.log('level complete!');
                 setLevelID((currentLevelID)=>{
                     return currentLevelID + 1
                 })
             }
-
             setColour(currentColour);
         }
     }, [currentHex])
